@@ -265,12 +265,14 @@ class QarzConteroller extends Controller
         return redirect()->back()->with('success', 'Qarz uzildi')->with('t_qarzdor_id', $request->qarzdor_id);
     }
     public function qarzdor_tahrirlash(Request $request){
+
         $request->validate([
             'qarzdor_id' => 'required',
             'ism' => 'required',
             'telefon' => 'required  | min:9 | max:9',
             'limit' => 'required',
             'qaytarish_muddati' => 'required | date | date_format:Y-m-d',
+            'korxona_id'=>"nullable"
         ]);
         $qarzdor = Qarzdor::find($request->qarzdor_id);
         if($qarzdor->phone != $request->telefon){
@@ -287,6 +289,7 @@ class QarzConteroller extends Controller
             $qarzdor->caption = $request->izoh;
             $qarzdor->return_date = $request->qaytarish_muddati;
             $qarzdor->status = $request->status_edit;
+            $qarzdor->korxona_id = $request->korxona_id;
             $qarzdor->save();
             return redirect()->back()->with('success', 'Ma\'lumotlar tahrirlandi')->with('t_qarzdor_id', $request->qarzdor_id);
 

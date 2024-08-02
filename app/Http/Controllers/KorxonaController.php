@@ -104,4 +104,10 @@ class KorxonaController extends Controller
 
         return redirect()->route('korxona.index')->with('success', 'Korxona muvaffaqiyatli o\'chirildi');
     }
+
+
+
+
+
+
 }

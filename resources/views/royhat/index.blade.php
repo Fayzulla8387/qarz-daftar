@@ -49,6 +49,7 @@
                 <th>Telefon qaram</th>
                 <th>Qaytarish muddati</th>
                 <th>SMS soni</th>
+                <th>Korxona nomi</th>
             </tr>
             </thead>
             <tbody>
@@ -64,6 +65,7 @@
                     <td class=" yashil">{{$item->phone}}</td>
                     <td class=" yashil">{{$item->return_date}}</td>
                     <td class=" yashil">{{$item->sms_count}}</td>
+                    <td class="yashil">{{ $item->korxona ? $item->korxona->name : '' }}</td>
                 </tr>
                 @endif
                 @if($item['return_date']<date('Y-m-d') )
@@ -74,6 +76,7 @@
                     <td class=" qizil">{{$item->phone}}</td>
                     <td class=" qizil">{{$item->return_date}}</td>
                     <td class=" qizil">{{$item->sms_count}}</td>
+                    <td class="qizil">{{ $item->korxona ? $item->korxona->name : '' }}</td>
                 </tr>
                 @endif
                 @if($item['return_date']==date('Y-m-d') )
@@ -84,6 +87,7 @@
                     <td class=" sariq">{{$item->phone}}</td>
                     <td class=" sariq">{{$item->return_date}}</td>
                     <td class=" sariq">{{$item->sms_count}}</td>
+                    <td class="sariq">{{ $item->korxona ? $item->korxona->name : '' }}</td>
                 </tr>
                 @endif
 
