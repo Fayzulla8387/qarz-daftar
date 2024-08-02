@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>PlusMarket</title>
+    <title>Demo</title>
     <link rel="stylesheet" href="{{asset('assets/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="{{asset('select2/select2.min.css')}}">
     <link rel="stylesheet" href="{{asset('select2/theme.default.min.css')}}">
     <style>  @yield('css')</style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
 
 
 </head>
@@ -23,7 +25,7 @@
         <div class="container-fluid d-flex flex-column p-0"><a href="{{route('dashboard')}}"
                                                                class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0">
                 <div class="sidebar-brand-icon"><img class="rounded-circle" alt="logo"
-                                                     src="{{asset('assets/img/logo.jpg')}}" data-holder-rendered="true"
+                                                     src="{{asset('assets/img/logo.png   ')}}" data-holder-rendered="true"
                                                      style="width: 50px; height: 50px;"></div>
                 <div class="sidebar-brand-text mx-2"><span style="font-size: 18px;">Demo</span></div>
             </a>
@@ -38,13 +40,16 @@
                                         href="{{route('qarzdaftar')}}"><i style="font-size: 20px;"
                                                                           class="fas fa-book"></i><span
                             style="font-size: 18px;">Qarz daftar</span></a></li>
-{{--                <li class="nav-item"><a class="nav-link @if(request()->routeIs('madrasa_qarzlar')) active @endif"--}}
-{{--                                        href="{{route('madrasa_qarzlar')}}"><i style="font-size: 20px;"--}}
-{{--                                                                               class="fas fa-book"></i><span--}}
-{{--                            style="font-size: 18px;">Madrasa qarzlar</span></a></li>--}}
+                {{--                <li class="nav-item"><a class="nav-link @if(request()->routeIs('madrasa_qarzlar')) active @endif"--}}
+                {{--                                        href="{{route('madrasa_qarzlar')}}"><i style="font-size: 20px;"--}}
+                {{--                                                                               class="fas fa-book"></i><span--}}
+                {{--                            style="font-size: 18px;">Madrasa qarzlar</span></a></li>--}}
                 <li class="nav-item"><a class="nav-link @if(request()->routeIs('royhat')) active @endif"
                                         href="{{route('royhat')}}"><i style="font-size: 20px;" class="fas fa-table"></i><span
                             style="font-size: 18px;">Ro'yhat</span></a></li>
+                <li class="nav-item"><a class="nav-link @if(request()->routeIs('korxona')) active @endif"
+                                        href="{{route('korxona.index')}}"><i style="font-size: 20px;" class="fas fa-table"></i><span
+                            style="font-size: 18px;">Korxonalar</span></a></li>
                 <li class="nav-item"><a class="nav-link @if(request()->routeIs('sms')) active @endif"
                                         href="{{route('sms')}}"><i style="font-size: 20px;" class="fas fa-sms"></i><span
                             style="font-size: 18px;">Sms</span></a></li>
@@ -93,17 +98,7 @@
                 @yield('content')
             </div>
         </div>
-        <footer class="bg-white sticky-footer">
-            <div class="container my-auto">
-                <div class="text-center my-auto copyright">
-                    @if(date('Y') == 2022)
-                        <span>Copyright © Plusmarket {{date('Y')}}
-                            @else
-                                <span>Copyright © Plusmarket 2022 - {{date('Y')}}
-                                    @endif</span>
-                        </span></div>
-            </div>
-        </footer>
+
     </div>
 
 
@@ -118,6 +113,13 @@
 <script src="{{asset('select2/jquery.tablesorter.min.js')}}"></script>
 <script src="{{asset('select2/sweetalert2.all.min.js')}}"></script>
 <script src="{{asset('select2/canvasjs.min.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+
+
 <script>
 
     function incrAllFontSize() {

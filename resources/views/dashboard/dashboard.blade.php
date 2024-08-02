@@ -80,36 +80,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-5 col-xl-4">
-            <div class="card shadow mb-4">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h6 class="text-primary fw-bold m-0">Qarz berish ko'rsatkichi % hisobida</h6>
 
-
-                </div>
-                <div class="card-body">
-                    <div class="chart-area">
-                        <canvas data-bss-chart='
-                    {"type":"doughnut",
-                    "data":
-                    {"labels":
-                    [{{$names}}],
-
-                    "datasets":
-                    [{"label":"","backgroundColor":
-                    ["#4e73df","#1cc88a","#36b9cc"],
-                    "borderColor":["#ffffff","#ffffff","#ffffff"],
-                    "data":[{{$vals}}]}]},
-                    "options":{"maintainAspectRatio":false,
-                    "legend":{"display":false,"labels":
-                    {"fontStyle":"normal"}},"title":
-                    {"fontStyle":"normal"}}}'></canvas>
-                    </div>
-                    <div class="text-center small mt-4"><span class="me-2"><i class="fas fa-circle text-primary"></i>&nbsp;Do'kon1</span><span
-                            class="me-2"><i class="fas fa-circle text-success"></i>&nbsp;Do'kon2</span></div>
-                </div>
-            </div>
-        </div>
     </div>
     <div class="row overflow-auto">
         <div class="col-12 mb-4">
@@ -150,7 +121,6 @@
                                 <th>{{number_format($item->debt,0,'.',' ')}}</th>
                                 <th>@if($item->debt > 0)
                                         <span class="badge bg-danger">Qarz berilgan</span>
-
                                     @else
                                         <span class="badge bg-success">Qarz to'langan</span>
 

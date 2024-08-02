@@ -5,7 +5,7 @@
     <form action="{{route('profile_update')}}" class="form" method="post">
         @csrf
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Do'kon nomi:</label>
+            <label for="exampleInputEmail1" class="form-label">Joy nomi:</label>
             <input type="text" name="name" value="{{$dukon->name}}" required class="form-control" id="">
         </div>
         <div class="mb-3">
