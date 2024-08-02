@@ -24,6 +24,8 @@ return new class extends Migration
             $table->integer('status')->default(1);
             $table->integer('sms_count')->default(0);
             $table->integer('type')->default(1);
+            $table->unsignedBigInteger('korxona_id')->nullable();
+            $table->foreign('korxona_id')->references('id')->on('korxonas')->onDelete('cascade');
             $table->timestamps();
         });
     }

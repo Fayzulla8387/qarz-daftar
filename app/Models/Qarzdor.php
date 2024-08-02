@@ -17,5 +17,10 @@ class Qarzdor extends Model
         'limit',
         'type',
         'user_id',
+        'korxona_id',
     ];
+    public function korxona()
+    {
+        return $this->belongsTo(Korxona::class, 'korxona_id');
+    }
 }

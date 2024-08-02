@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Korxona;
 use App\Models\OldTarix;
 use App\Models\Qarzdor;
 use App\Models\SmsTarix;
@@ -176,6 +177,8 @@ class FrontController extends Controller
             ->where('type', 1);
 
 
+        $korxonalar=Korxona::all('id','name');
+
         $bugungi_qarzdorlar = Qarzdor::all('type','name','phone','debt','return_date')
             ->where('type', 1)
             ->where('return_date', date('Y-m-d'));
@@ -183,6 +186,7 @@ class FrontController extends Controller
         return view('qarzdaftar.index', [
             'qarzdorlar' => (object)$qarzdorlar,
             'bugungi_qarzdorlar' => $bugungi_qarzdorlar,
+            'korxonalar'=>$korxonalar
         ]);
     }
 

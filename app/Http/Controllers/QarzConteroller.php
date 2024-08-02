@@ -24,6 +24,7 @@ class QarzConteroller extends Controller
             'phone' => 'required  | min:9 | max:9',
             'debt' => 'required',
             'return_date' => 'required | date | date_format:Y-m-d',
+            "korxona_id" => 'nullable',
         ]);
         if ($request->phone!='123456789') {
             if (Qarzdor::all()->where('phone', $request->phone)->count() > 0) {
@@ -40,7 +41,7 @@ class QarzConteroller extends Controller
             'debt' => $request->debt,
             'return_date' => $request->return_date,
             'type'=>$request->type,
-
+            'korxona_id' => $request->korxona_id,
         ]);
         Tarix::create([
             'qarzdor_id' => $a->id,

@@ -24,7 +24,6 @@
         <div class="float-end">
             <div class="" style="">
 
-
                     <table>
                         <tr>
                             <th>
@@ -210,6 +209,15 @@
                 <form action="{{route('qarzdor_yaratish')}}" method="post">
                     @csrf
                     <input type="hidden" name="type" value="1">
+                    <div class="mb-3">
+                        <label for="korxona_id" class="form-label">Korxona:</label>
+                        <select name="korxona_id" class="form-control" id="korxona_id">
+                            <option value="">Korxona tanlang</option>
+                            @foreach($korxonalar as $korxona)
+                                <option value="{{ $korxona->id }}">{{ $korxona->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Ism:</label>
                         <input type="text" name="name" value="{{old('name')}}" required class="form-control" id="exampleInputEmail1">
