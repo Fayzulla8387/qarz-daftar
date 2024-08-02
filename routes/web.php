@@ -46,6 +46,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('eskitarix/{id}', [QarzConteroller::class, 'eskitarix'])->name('eskitarix');
     Route::get('qarzdor/{id}', [FrontController::class, 'qarzdor'])->name('qarzdor');
     Route::resource('korxona', \App\Http\Controllers\KorxonaController::class);
+    Route::get('/korxona/{id}/qarzdorlar', [FrontController::class, 'getQarzdorlar'])->name('korxona.qarzdorlar');
+
 });
 
 

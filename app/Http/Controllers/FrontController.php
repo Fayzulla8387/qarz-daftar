@@ -193,9 +193,10 @@ class FrontController extends Controller
     public function royhat()
     {
 
-        $qarzdorlar = Qarzdor::all('id','type','name','phone','debt','return_date','sms_count')
+        $qarzdorlar = Qarzdor::with('korxona')
             ->where('debt', '>', 0)
-            ->sortBy('return_date');
+            ->orderBy('return_date')
+            ->get(['id', 'type', 'name', 'phone', 'debt', 'return_date', 'sms_count', 'korxona_id']);
 
         return view('royhat.index', [
             'qarzdorlar' => $qarzdorlar,
@@ -269,5 +270,16 @@ class FrontController extends Controller
             $user->save();
         }
         return redirect()->route('profile')->with('success', 'Profil muvaffaqiyatli yangilandi');
+    }
+
+
+    public function getQarzdorlar($id)
+    {
+        if ($id == 'none') {
+            $qarzdorlar = Qarzdor::whereNull('korxona_id')->where('debt', '>', 0)->get();
+        } else {
+            $qarzdorlar = Qarzdor::where('korxona_id', $id)->where('debt', '>', 0)->get();
+        }
+        return response()->json($qarzdorlar);
     }
 }
