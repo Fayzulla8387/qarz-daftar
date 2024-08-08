@@ -49,7 +49,7 @@
                 <th>Telefon qaram</th>
                 <th>Qaytarish muddati</th>
                 <th>SMS soni</th>
-                <th>Korxona nomi</th>
+                <th>Tashkilot nomi</th>
             </tr>
             </thead>
             <tbody>

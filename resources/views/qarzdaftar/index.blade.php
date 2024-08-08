@@ -243,7 +243,7 @@
                         @csrf
                         <input type="hidden" name="type" value="1">
                         <div class="mb-3">
-                            <label for="korxona_id" class="form-label">Korxona:</label>
+                            <label for="korxona_id" class="form-label">Tashkilot:</label>
                             <select name="korxona_id" class="form-control" id="korxona_id">
                                 <option value="">Korxona tanlang</option>
                                 @foreach($korxonalar as $korxona)
@@ -309,7 +309,7 @@
                             <input type="text" name="ism" required class="form-control" id="edit_ism">
                         </div>
                         <div class="mb-3">
-                            <label for="korxona_id" class="form-label">Korxona:</label>
+                            <label for="korxona_id" class="form-label">Tashkilot:</label>
                             <select name="korxona_id" class="form-control" id="korxona_id">
                                 <option value="">Korxona yo'q</option>
                                 @foreach($korxonalar as $k)
