@@ -49,7 +49,7 @@ class QarzConteroller extends Controller
             'caption' => $request->caption,
             'user_id' => auth()->user()->id,
         ]);
-        if ($request->phone!='123456789') {
+        if ($request->phone!='123456789') {/// not number
             try {
                 $sms_r_d = date('d.m.Y', strtotime($request->return_date));
 
@@ -418,10 +418,10 @@ class QarzConteroller extends Controller
        $nm=(string)$request->telefon_nomer;
        $nm=$nm[0].$nm[1];
        if ($nm=='91' || $nm=='90'){
-           $sendsinglesms = $eskiz->requestSmsSend('4546', $text, '998' .$request->telefon_nomer, "$time", 'https://plusmarket.uz/api/call');
+           $sendsinglesms = $eskiz->requestSmsSend('4546', $text, '998' .$request->telefon_nomer, "$time", '/');
 
        }else{
-           $sendsinglesms = $eskiz->requestSmsSend('PLUS_MARKET', $text, '998' .$request->telefon_nomer, "$time", 'https://plusmarket.uz/api/call');
+           $sendsinglesms = $eskiz->requestSmsSend('PLUS_MARKET', $text, '998' .$request->telefon_nomer, "$time", '/');
 
        } $tz=$sendsinglesms->getResponse();
 

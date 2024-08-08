@@ -4,8 +4,8 @@
     <div class="card overflow-auto mt-5" style="box-shadow: 0px 0px 5px 5px #c3c3ca; color: black; border-top: 5px solid #0b0b5b; border-bottom: 2px solid #0d0d54">
         <div class="card-header">
             <div class="d-flex justify-content-between">
-                <h3>Barcha Korxona va Tashkilotlar ro'yhati</h3>
-                <button class="btn btn-success" data-toggle="modal" data-target="#addKorxonaModal">Korxona Qo'shish</button>
+                <h3>Barcha Tashkilotlar ro'yhati</h3>
+                <button class="btn btn-success" data-toggle="modal" data-target="#addKorxonaModal">Tashkilot Qo'shish</button>
             </div>
         </div>
         <div class="card-body">
@@ -14,7 +14,7 @@
                     <thead class="thead-dark">
                     <tr>
                         <th scope="col">T/R</th>
-                        <th scope="col">Korxona nomi</th>
+                        <th scope="col">Tashkilot nomi</th>
                         <th scope="col">Qarz miqdori</th>
                         <th scope="col">Amallar</th>
                     </tr>
@@ -35,12 +35,6 @@
                             </td>
                         </tr>
                     @endforeach
-                    <tr id="korxona-none" data-id="none">
-                        <td>№</td>
-                        <td><a href="javascript:void(0);" onclick="loadQarzdorlar('none')">Hech qaysi korxonaga tegishli bo'lmaganlar</a></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
                     </tbody>
                 </table>
             </div>
