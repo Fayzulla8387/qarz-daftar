@@ -44,8 +44,8 @@ class SendSms extends Command
                 while (SmsTarix::where('sms_id',$time)->first()){
                     $time=Cereal::generate(['length' => '10','delimiter'=>'']);
                 }
-                $text="Hurmatli mijoz ! PLUSMARKET do'konidan ".$item->debt." so'm qarzingizni to'lash muddati keldi. Bugunoq to'lashni unutmang !
-Murojaat uchun: tel:888069999";
+                $text="Hurmatli mijoz !  Ruslan Kafedan ".$item->debt." so'm qarzingizni to'lash muddati keldi. Bugunoq to'lashni unutmang !
+Murojaat uchun: tel:";//telefon nomer;
                 $eskiz = new Eskiz('ESKIZDAN_OLGAN_EMAILNI_QOYASAN', 'ESKIZ_BARGAN_KEY_NI_QOYASAN');
                 $auth = $eskiz->requestAuthLogin();
                 $nm=(string)$item->phone;

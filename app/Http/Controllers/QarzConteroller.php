@@ -57,7 +57,7 @@ class QarzConteroller extends Controller
                 while (SmsTarix::where('sms_id', $time)->first()) {
                     $time = Cereal::generate(['length' => '10', 'delimiter' => '']);
                 }
-                $text = "PLUS MARKET do'konidan " . $request->debt . " qarz olindi. Qaytarish muddati " . $sms_r_d;
+                $text = "Ruslan Kafedan " . $request->debt . " qarz olindi. Qaytarish muddati " . $sms_r_d;
                 $eskiz = new Eskiz('ESKIZDAN_OLGAN_EMAILNI_QOYASAN', 'ESKIZ_BARGAN_KEY_NI_QOYASAN');
                 $auth = $eskiz->requestAuthLogin();
                 $nm=(string)$request->phone;
@@ -66,7 +66,7 @@ class QarzConteroller extends Controller
                     $sendsinglesms = $eskiz->requestSmsSend('4546', $text, '998' . $request->phone, "$time", 'https://plusmarket.uz/api/call');
 
                 }else{
-                    $sendsinglesms = $eskiz->requestSmsSend('PLUS_MARKET', $text, '998' . $request->phone, "$time", 'https://plusmarket.uz/api/call');
+                    $sendsinglesms = $eskiz->requestSmsSend('4546', $text, '998' . $request->phone, "$time", 'https://plusmarket.uz/api/call');
 
                 }
                 $tz = $sendsinglesms->getResponse();
@@ -131,7 +131,7 @@ class QarzConteroller extends Controller
                     $sendsinglesms = $eskiz->requestSmsSend('4546', $text, '998' . $qarzdor->phone, "$time", 'https://plusmarket.uz/api/call');
 
                 }else{
-                    $sendsinglesms = $eskiz->requestSmsSend('PLUS_MARKET', $text, '998' . $qarzdor->phone, "$time", 'https://plusmarket.uz/api/call');
+                    $sendsinglesms = $eskiz->requestSmsSend('4546', $text, '998' . $qarzdor->phone, "$time", 'https://plusmarket.uz/api/call');
 
                 }
                 $tz = $sendsinglesms->getResponse();
@@ -200,7 +200,7 @@ class QarzConteroller extends Controller
                     while (SmsTarix::where('sms_id', $time)->first()) {
                         $time = Cereal::generate(['length' => '10', 'delimiter' => '']);
                     }
-                    $text = "PLUS MARKET do'konidagi barcha qarzlaringiz to'landi. Doimiy xaridorimiz bo'lib qoling !";
+                    $text = "Rsulan Kafesidagi barcha qarzlaringiz to'landi. Doimiy mijozimiz bo'lib qoling !";
                     $eskiz = new Eskiz('ESKIZDAN_OLGAN_EMAILNI_QOYASAN', 'ESKIZ_BARGAN_KEY_NI_QOYASAN');
                     $eskiz->requestAuthLogin();
                     $nm=(string)$qarzdor->phone;
@@ -235,13 +235,13 @@ class QarzConteroller extends Controller
                     while (SmsTarix::where('sms_id', $time)->first()) {
                         $time = Cereal::generate(['length' => '10', 'delimiter' => '']);
                     }
-                    $text = "PLUS MARKET do'koniga " . $request->qarz_miqdori . " qarz to'landi . Joriy qarzdorlik " . $qarzdor->debt . " Qaytarish muddati " . $sms_r_d;
+                    $text = "Ruslan Kafe ga " . $request->qarz_miqdori . " qarz to'landi . Joriy qarzdorlik " . $qarzdor->debt . " Qaytarish muddati " . $sms_r_d;
                     $eskiz = new Eskiz('ESKIZDAN_OLGAN_EMAILNI_QOYASAN', 'ESKIZ_BARGAN_KEY_NI_QOYASAN');
                     $eskiz->requestAuthLogin();
                     $nm=(string)$qarzdor->phone;
                     $nm=$nm[0].$nm[1];
                     if ($nm=='91' || $nm=='90'){
-                        $sendsinglesms = $eskiz->requestSmsSend('4546', $text, '998' . $qarzdor->phone, "$time", 'https://plusmarket.uz/api/call');
+                        $sendsinglesms = $eskiz->requestSmsSend('4546', $text, '998' . $qarzdor->phone, "$time", 'https://plusmarket.uz/api/call');//url o'zgaradi;
 
                     }else{
                         $sendsinglesms = $eskiz->requestSmsSend('PLUS_MARKET', $text, '998' . $qarzdor->phone, "$time", 'https://plusmarket.uz/api/call');
@@ -323,7 +323,7 @@ class QarzConteroller extends Controller
             $time=Cereal::generate(['length' => '10','delimiter'=>'']);
         }
         $qarz=$qarzdor->debt;
-        $text="Hurmatli mijoz ! PLUS MARKET do'konidan ".$qarz." so'm qarzingizni to'lash muddati keldi. Bugunoq to'lashni unutmang ! Murojaat uchun: tel:888069999 ";
+        $text="Hurmatli mijoz ! Ruslan Kafedan ".$qarz." so'm qarzingizni to'lash muddati keldi. Bugunoq to'lashni unutmang ! Murojaat uchun: tel:888069999 ";
         try {
             $eskiz = new Eskiz('ESKIZDAN_OLGAN_EMAILNI_QOYASAN', 'ESKIZ_BARGAN_KEY_NI_QOYASAN');
             $auth = $eskiz->requestAuthLogin();
@@ -333,7 +333,7 @@ class QarzConteroller extends Controller
                 $sendsinglesms = $eskiz->requestSmsSend('4546', $text, '998' . $qarzdor->phone, "$time", 'https://plusmarket.uz/api/call');
 
             }else{
-                $sendsinglesms = $eskiz->requestSmsSend('PLUS_MARKET', $text, '998' . $qarzdor->phone, "$time", 'https://plusmarket.uz/api/call');
+                $sendsinglesms = $eskiz->requestSmsSend('4546', $text, '998' . $qarzdor->phone, "$time", 'https://plusmarket.uz/api/call');
 
             }   $tz=$sendsinglesms->getResponse();
 
@@ -370,7 +370,7 @@ class QarzConteroller extends Controller
                 $time=Cereal::generate(['length' => '10','delimiter'=>'']);
             }
             $qarz=$qarzdor->debt;
-            $text="Hurmatli mijoz ! PLUS MARKET do'konidan ".$qarz." so'm qarzingizni to'lash muddati keldi. Bugunoq to'lashni unutmang ! Murojaat uchun: tel:888069999 ";
+            $text="Hurmatli mijoz ! Ruslan Kafedan ".$qarz." so'm qarzingizni to'lash muddati keldi. Bugunoq to'lashni unutmang ! Murojaat uchun: tel: ";//telefon yozilodi;
             try {
                 $eskiz = new Eskiz('xojayevfayzulla7@gmail.com', '1tac1NmKq5P2oqYo2tjlw2oj1B5sr7A49EXycqOk');
                 $auth = $eskiz->requestAuthLogin();
@@ -380,7 +380,7 @@ class QarzConteroller extends Controller
                     $sendsinglesms = $eskiz->requestSmsSend('4546', $text, '998' . $qarzdor->phone, "$time", 'https://plusmarket.uz/api/call');
 
                 }else{
-                    $sendsinglesms = $eskiz->requestSmsSend('PLUS_MARKET', $text, '998' . $qarzdor->phone, "$time", 'https://plusmarket.uz/api/call');
+                    $sendsinglesms = $eskiz->requestSmsSend('4546', $text, '998' . $qarzdor->phone, "$time", 'https://plusmarket.uz/api/call');
 
                 }  $tz=$sendsinglesms->getResponse();
 
@@ -406,7 +406,7 @@ class QarzConteroller extends Controller
         $request->validate([
             'telefon_nomer' => 'required | min:9 | max:9',
         ]);
-        $text="PLUS MARKET da barcha mahsulotlar, oziq-ovqat, o'yinchoq, kanstovar va ovqatlanish uchun Kafe mavjud. Sizni kutamiz! Aloqa:888069999 https://t.me/plusmarket_N1";
+        $text=""; //Reklama uchun sms;
 
    try{
        $time=Cereal::generate(['length' => '10','delimiter'=>'']);
@@ -421,7 +421,7 @@ class QarzConteroller extends Controller
            $sendsinglesms = $eskiz->requestSmsSend('4546', $text, '998' .$request->telefon_nomer, "$time", '/');
 
        }else{
-           $sendsinglesms = $eskiz->requestSmsSend('PLUS_MARKET', $text, '998' .$request->telefon_nomer, "$time", '/');
+           $sendsinglesms = $eskiz->requestSmsSend('4546', $text, '998' .$request->telefon_nomer, "$time", '/');
 
        } $tz=$sendsinglesms->getResponse();
 
