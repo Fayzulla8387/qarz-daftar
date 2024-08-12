@@ -372,7 +372,7 @@ class QarzConteroller extends Controller
             $qarz=$qarzdor->debt;
             $text="Hurmatli mijoz ! PLUS MARKET do'konidan ".$qarz." so'm qarzingizni to'lash muddati keldi. Bugunoq to'lashni unutmang ! Murojaat uchun: tel:888069999 ";
             try {
-                $eskiz = new Eskiz('ESKIZDAN_OLGAN_EMAILNI_QOYASAN', 'ESKIZ_BARGAN_KEY_NI_QOYASAN');
+                $eskiz = new Eskiz('xojayevfayzulla7@gmail.com', '1tac1NmKq5P2oqYo2tjlw2oj1B5sr7A49EXycqOk');
                 $auth = $eskiz->requestAuthLogin();
                 $nm=(string)$qarzdor->phone;
                 $nm=$nm[0].$nm[1];

@@ -360,21 +360,26 @@
 @section('js')
     <script>
         $(document).ready(function () {
-
             $('#izlash1').val(0);
-            @if(session('t_qarzdor_id'))
 
+            // Agar sessiya o'zgaruvchisi mavjud bo'lsa, AJAX so'rovi yuboriladi
+            @if(session('t_qarzdor_id'))
             $('#kattadiv').css('display', 'block');
-            var izlash1 = {{session('t_qarzdor_id')}};
+            var izlash1 = {{ session('t_qarzdor_id') }};
             $.ajax({
                 type: "GET",
                 url: "/qarzdor/" + izlash1,
                 success: function (response) {
                     printData(response);
+                },
+                error: function (xhr) {
+                    console.error("AJAX so'rovi xatolik: ", xhr);
                 }
             });
             @endif
-            $('#izlash1').on('change', (function () {
+
+            // Select element o'zgartirilsa AJAX so'rovi yuboriladi
+            $('#izlash1').on('change', function () {
                 $('#kattadiv').css('display', 'block');
                 var izlash1 = $(this).val();
                 $.ajax({
@@ -382,11 +387,12 @@
                     url: "/qarzdor/" + izlash1,
                     success: function (response) {
                         printData(response);
+                    },
+                    error: function (xhr) {
+                        console.error("AJAX so'rovi xatolik: ", xhr);
                     }
                 });
-
-
-            }));
+            });
         });
 
         function printData(qarzdor) {
@@ -397,28 +403,28 @@
             $('#edit_tel').val(qarzdor['phone']);
             $('#edit_limit').val(qarzdor['limit']);
             $('#edit_izoh').val(qarzdor['caption']);
-            if (qarzdor['caption'] != null) {
+            if (qarzdor['caption']) {
                 $('#eslatma').text('Eslatma: ' + qarzdor['caption']);
-            }
-            if (qarzdor['status'] == 1) {
-                $('#editing_status').val(1);
             } else {
-                $('#editing_status').val(2);
+                $('#eslatma').text('');
             }
+            $('#editing_status').val(qarzdor['status'] === 1 ? 1 : 2);
             $('.qaytarish_muddati').val(qarzdor['return_date']);
 
-            qarzdor['phone'] = '' + qarzdor['phone'];
-            $('#telefon_d').text(qarzdor['phone'][0] + qarzdor['phone'][1] + '-' + qarzdor['phone'][2] + qarzdor['phone'][3] + qarzdor['phone'][4] + '-' + qarzdor['phone'][5] + qarzdor['phone'][6] + '-' + qarzdor['phone'][7] + qarzdor['phone'][8]);
-            var a = parseInt(qarzdor['debt']);
-            $('#qarz_d').text((a.toLocaleString()).replaceAll(',', ' ') + ' so\'m');
+            var phone = qarzdor['phone'] || '';
+            $('#telefon_d').text(phone.match(/.{1,4}/g).join('-'));
+
+            var debt = parseInt(qarzdor['debt'], 10);
+            $('#qarz_d').text(debt.toLocaleString('en-US') + ' so\'m');
+
             $('#muddat_d').text(qarzdor['return_date']);
-            if (qarzdor['status'] == 1) {
-                $('#holat_d').text('Omonatdor');
-                $('#holat_d').css('color', '#0b7b08');
+
+            if (qarzdor['status'] === 1) {
+                $('#holat_d').text('Omonatdor').css('color', '#0b7b08');
             } else {
-                $('#holat_d').text('Omonatdor emas');
-                $('#holat_d').css('color', '#ff0000');
+                $('#holat_d').text('Omonatdor emas').css('color', '#ff0000');
             }
         }
     </script>
+
 @endsection
