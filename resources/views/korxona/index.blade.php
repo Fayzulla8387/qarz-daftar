@@ -25,14 +25,17 @@
                             <td>{{ $loop->index + 1 }}</td>
                             <td><a href="javascript:void(0);" onclick="loadQarzdorlar({{ $k->id }})">{{ $k->name }}</a></td>
                             <td>{{ $k->totalDebt() }}</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm" data-id="{{ $k->id }}" data-name="{{ $k->name }}" data-toggle="modal" data-target="#editKorxonaModal" onclick="populateEditForm('{{ $k->id }}', '{{ $k->name }}')">Tahrirlash</button>
-                                <form action="{{ route('korxona.destroy', $k->id) }}" method="POST" style="display:inline-block;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Siz rostdan ham ushbu korxonani oʻchirmoqchimisiz?')">O'chirish</button>
-                                </form>
-                            </td>
+                          @if(\Illuminate\Support\Facades\Auth::user()->role=='admin')
+                                <td>
+                                    <button class="btn btn-primary btn-sm" data-id="{{ $k->id }}" data-name="{{ $k->name }}" data-toggle="modal" data-target="#editKorxonaModal" onclick="populateEditForm('{{ $k->id }}', '{{ $k->name }}')">Tahrirlash</button>
+                                    <form action="{{ route('korxona.destroy', $k->id) }}" method="POST" style="display:inline-block;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Siz rostdan ham ushbu korxonani oʻchirmoqchimisiz?')">O'chirish</button>
+                                    </form>
+                                </td>
+
+                            @endif
                         </tr>
                     @endforeach
                     </tbody>
