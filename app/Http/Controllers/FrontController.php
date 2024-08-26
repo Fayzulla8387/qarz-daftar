@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Hash;
 class FrontController extends Controller
 {
     public function qarzdor($id){
-        return response()->json(Qarzdor::find($id));
+        return response()->json(Qarzdor::with('korxona')->find($id));
     }
 
     public function balansim(){

@@ -57,8 +57,8 @@ class QarzConteroller extends Controller
                 while (SmsTarix::where('sms_id', $time)->first()) {
                     $time = Cereal::generate(['length' => '10', 'delimiter' => '']);
                 }
-                $text = "Ruslan Kafedan " . $request->debt . " qarz olindi. Qaytarish muddati " . $sms_r_d;
-                $eskiz = new Eskiz('ESKIZDAN_OLGAN_EMAILNI_QOYASAN', 'ESKIZ_BARGAN_KEY_NI_QOYASAN');
+                $text = "Ruslan Kafedan qarz olindi. Qaytarish muddati " . $sms_r_d;
+                $eskiz = new Eskiz('jamshid_101@icloud.com', '4h3tEhHDWVr0BpgCJuKXsNc0jgo21qdk8xI4AnD9');
                 $auth = $eskiz->requestAuthLogin();
                 $nm=(string)$request->phone;
                 $nm=$nm[0].$nm[1];
@@ -122,8 +122,8 @@ class QarzConteroller extends Controller
                 while (SmsTarix::where('sms_id', $time)->first()) {
                     $time = Cereal::generate(['length' => '10', 'delimiter' => '']);
                 }
-                $text = "PLUS MARKET do'konidan " . $request->qarz_miqdori . " qarz olindi. Joriy qarzdorlik " . $qarzdor->debt . " Qaytarish muddati " . $sms_r_d;
-                $eskiz = new Eskiz('ESKIZDAN_OLGAN_EMAILNI_QOYASAN', 'ESKIZ_BARGAN_KEY_NI_QOYASAN');
+                $text = "PLUS MARKET do'konidan qarz olindi. Qaytarish muddati " . $sms_r_d;
+                $eskiz = new Eskiz('jamshid_101@icloud.com', '4h3tEhHDWVr0BpgCJuKXsNc0jgo21qdk8xI4AnD9');
                 $auth = $eskiz->requestAuthLogin();
                 $nm=(string)$qarzdor->phone;
                 $nm=$nm[0].$nm[1];

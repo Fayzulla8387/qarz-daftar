@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('qarzdors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('phone')->unique();
+            $table->integer('phone');
             $table->integer('debt')->default(0);
             $table->date('return_date')->nullable();
             $table->integer('limit')->default(0);

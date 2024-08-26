@@ -45,20 +45,24 @@
                                     </button>
                                 </form>
                             </th>
-                            <th>
-                                <button data-bs-toggle="modal" data-bs-target="#modal_qarzdor_tahrirlash"
-                                        style="color: #ffffff;background-color: #037ea4;font-weight: bolder"
-                                        type="button" class="btn m-1"><i class="fas fa-pen"></i> Tahrirlash
-                                </button>
+                         @if(\Illuminate\Support\Facades\Auth::user()->role=='admin')
+                                <th>
+                                    <button data-bs-toggle="modal" data-bs-target="#modal_qarzdor_tahrirlash"
+                                            style="color: #ffffff;background-color: #037ea4;font-weight: bolder"
+                                            type="button" class="btn m-1"><i class="fas fa-pen"></i> Tahrirlash
+                                    </button>
 
-                            </th>
-                            <th>
-                                <button data-bs-toggle="modal" data-bs-target="#modal_qazbuzish"
-                                        style="color: black;background-color: #e1bf07;font-weight: bolder" type="button"
-                                        class="btn  m-1"><i class="fa fa-credit-card"></i> Qarz uzish
-                                </button>
+                                </th>
+                                <th>
+                                    <button data-bs-toggle="modal" data-bs-target="#modal_qazbuzish"
+                                            style="color: black;background-color: #e1bf07;font-weight: bolder" type="button"
+                                            class="btn  m-1"><i class="fa fa-credit-card"></i> Qarz uzish
+                                    </button>
 
-                            </th>
+                                </th>
+
+
+                            @endif
                             <th>
                                 <form id="form1" action="{{route('bitta-sms-jonat')}}" method="post">
                                     @csrf
@@ -88,6 +92,7 @@
                         <th scope="col">Telefon raqami</th>
                         <th scope="col">Qarz miqdori</th>
                         <th scope="col">Kutilayotgan qaytarish muddati</th>
+                        <th scope="col">Korxona</th>
                         <th scope="col">Holati</th>
                     </tr>
                     </thead>
@@ -96,6 +101,7 @@
                         <td id="telefon_d"></td>
                         <td id="qarz_d"></td>
                         <td id="muddat_d"></td>
+                        <td id="korxona_id"></td>
                         <td id="holat_d" style="color: #0b7b08; font-weight: bold">
                         </td>
                     </tr>
@@ -374,6 +380,7 @@
                 }
             });
             @endif
+
             $('#izlash1').on('change', (function () {
                 $('#kattadiv').css('display', 'block');
                 var izlash1 = $(this).val();
@@ -384,8 +391,6 @@
                         printData(response);
                     }
                 });
-
-
             }));
         });
 
@@ -412,6 +417,14 @@
             var a = parseInt(qarzdor['debt']);
             $('#qarz_d').text((a.toLocaleString()).replaceAll(',', ' ') + ' so\'m');
             $('#muddat_d').text(qarzdor['return_date']);
+
+            // Korxona ma'lumotlarini ko'rsatish
+            if (qarzdor.korxona) {
+                $('#korxona_id').text(qarzdor.korxona.name); // Korxona nomini ko'rsatish
+            } else {
+                $('#korxona_id').text('Korxona ma\'lum emas'); // Agar korxona bo'lmasa
+            }
+
             if (qarzdor['status'] == 1) {
                 $('#holat_d').text('Omonatdor');
                 $('#holat_d').css('color', '#0b7b08');

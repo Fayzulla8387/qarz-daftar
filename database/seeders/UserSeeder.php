@@ -20,7 +20,14 @@ class UserSeeder extends Seeder
         User::create([
            'name'=>"Admin",
            'email' =>'admin@gmail.com',
+            "role"=>"admin",
             'password'=>Hash::make('password')
+        ]);
+        User::create([
+            'name'=>"Barmen",
+            'email' =>'barmen@gmail.com',
+            "role"=>"barmen",
+            'password'=>Hash::make('bar1234')
         ]);
         Statistika::create([
             'date'=>date('Y-m-d',strtotime('-1 day')),
